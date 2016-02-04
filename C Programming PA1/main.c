@@ -11,11 +11,11 @@ double calculateHealAmount(double playerCritChance, double playerCritDamage, dou
 
 	if (random <= playerCritChance) 
 	{
-		healAmount = (int)((((double)attack * 0.2) * (playerCritDamage)) * (playerPhysicalResistance + 1));
+		healAmount = (int)((((double)attack * 0.4) * (playerCritDamage)) * (playerPhysicalResistance + 1));
 	}
 	else 
 	{
-		healAmount = (int)(((double)attack * 0.2) *(playerPhysicalResistance + 1));
+		healAmount = (int)(((double)attack * 0.4) *(playerPhysicalResistance + 1));
 	}
 	return healAmount;
 };
