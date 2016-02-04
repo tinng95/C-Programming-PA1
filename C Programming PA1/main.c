@@ -16,11 +16,36 @@ void attackCaculator(double playerCritChance, double playerCritDamage,  double p
 	HP = HP - attack;
 };
 
-void createPlayerCharacter(char *roleName, int *playerHealth, int *playerAttack, double *playerResistance, double *playerCritChance, double *playerCritDamage)
+void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack, double *playerResistance, double *playerCritChance, double *playerCritDamage)
+{/*Please create the following:*/
+	switch(*roleNumber)
 {
-	switch(*roleName)
-	{
-		case 1:
+		case 1: //Warrior: Low: attack, critChance. High: health, resistance, and crit damage
+			/*BEGINNING of your solution*/
+			*playerHealth = 10000; //Set *playersHealth to 10000
+			*playerAttack = 300; //Set *playerAttack to 300;
+			*playerResistance = rand() % 90 + 70; //Generate a random number inclusively between the range of 70 to 90
+			*playerCritChance = rand() % 30 + 10; //Genearte a random number inclusively betwen the range of 10 to 30
+			*playerCritDamage = rand() % 700 + 1000; // Generate a random number inclusively between the range of 700 to 1000
+			/*END of your solution*/
+			break;
+		case 2: //Mage: Low: health and resistance. Medium: crit damage. High: crit chance and attack
+			/*BEGINNING of your solution*/
+			*playerHealth = 4000; //Set *playersHealth to 4000
+			*playerAttack = 1000; //Set *playerAttack to 1000;
+			*playerResistance = rand() % 40 + 20; //Generate a random number inclusively between the range of 20 to 40
+			*playerCritChance = rand() % 90 + 50; //Genearte a random number inclusively betwen the range of 50 to 90
+			*playerCritDamage = rand() % 200 + 300; // Generate a random number inclusively between the range of 200 to 300
+			/*END of your solution*/
+			break;
+		case 3://Archer: Medium: health, attack and resistance. High: crit chance and crit damage
+			/*BEGINNING of your solution*/
+			*playerHealth = 6000; //Set *playersHealth to 6000
+			*playerAttack = 600; //Set *playerAttack to 600;
+			*playerResistance = rand() % 60 + 30; //Generate a random number inclusively between the range of 30 to 60
+			*playerCritChance = rand() % 90 + 70; //Genearte a random number inclusively betwen the range of 70 to 90
+			*playerCritDamage = rand() % 600 + 400; // Generate a random number inclusively between the range of 400 to 600
+			/*END of your solution*/
 			break;
 	}
 };
@@ -57,11 +82,12 @@ int main() {
 	double playerPhysicalResistance;
 	double playerCritChance;
 	double playerCritDamage;
-
-
+	
+	
 	//BOSS STATS
 	char bossName[10] = ('S', 'i', 'l', 'v', 'a');
 
+	
 	//FUNCTION
 	introduction();
 	getUserInput();
