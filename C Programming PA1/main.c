@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
 double attackCaculator(float critChance, double critDamage, double attack, float physicalResistance) 
 {
 	double random;
@@ -13,8 +14,17 @@ double attackCaculator(float critChance, double critDamage, double attack, float
 		attack = attack *(physicalResistance / 100);
 	}
 	return attack;
-};
+};*/
 
+
+void createPlayerCharacter(char *roleName, int *playerHealth, int *playerAttack, double *playerResistance, double *playerCritChance, double *playerCritDamage)
+{
+	switch(*roleName)
+	{
+		case 1:
+			break;
+	}
+}
 
 
 int main() {
@@ -35,7 +45,7 @@ int main() {
 	long lumion; // Currency;
 	double temp = (double)rand();
 
-	printf("%lf", temp);
+	printf("%lf", random);
 
 	return 0;
 };
