@@ -60,8 +60,7 @@ int main() {
 
 
 	//BOSS STATS
-	char bossName[10] = ('S', 'i', 'l', 'v', 'a', );
-
+	char bossName[10] = ('S', 'i', 'l', 'v', 'a');
 
 	//FUNCTION
 	introduction();
