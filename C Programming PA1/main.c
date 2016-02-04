@@ -13,8 +13,9 @@ void healCaculator(double playerCritChance, double playerCritDamage, double play
 		attack = (int)((double)attack *(playerPhysicalResistance / 100));
 	}
 
-	HP = HP - attack;
+	HP = HP + attack;
 };
+
 void attackCaculator(double playerCritChance, double playerCritDamage,  double playerPhysicalResistance, int attack, int HP)
 {
 	double random;
@@ -63,6 +64,9 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 	}
 };
 
+void createBoss(int *bossHealth, int *bossAttack, double *bossResistance, double *bossCritChance, double *bossCritDamage) 
+{
+};
 void introduction() {
 	printf("Welcome to your Programming Assignment 1!/n");
 	printf("In this assigment, you will have to choose one of the 3 classesto defeat Silva./n");
