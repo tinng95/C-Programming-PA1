@@ -30,9 +30,9 @@ void attackCalculator(int attackerAttack, double attackerCritChance, double atta
 	*targetHealth -= attackerAttack;
 };
 
-void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack, double *playerPhsycialResistance, double *playerCritChance, double *playerCritDamage)
+void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack, double *playerPhsycialResistance, double *playerCritChance, double *playerCritDamage)
 {/*Please create the following:*/
-	switch(*roleNumber)
+	switch(roleNumber)
 {
 		case 1: //Warrior: Low: attack, critChance. High: health, resistance, and crit damage
 			/*BEGINNING of your solution*/
@@ -116,7 +116,6 @@ int main() {
 	
 	//FUNCTION
 	introduction();
-	getUserInput();
 	createPlayerCharacter(getUserInput(), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
 
 	return 0;
