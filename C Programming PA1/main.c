@@ -26,8 +26,30 @@ void createPlayerCharacter(char *roleName, int *playerHealth, int *playerAttack,
 	}
 }
 
+};
+
+
 
 int main() {
+	//Student Info
+	char name[50];
+	int ID;
+
+	//CHARACTER 
+	const char roleName1[10]= ('w','a','r','r','i','o','r');
+	const char roleName2[10]= ('m','a','g','e');
+	const char roleName3[10]= ('a','r','c','h','e','r'); 
+	int warriorHP;
+	int mageHP;
+	int archerHP;
+
+	//CHARACTER STATS
+	double playerPhysicalResistance;
+	double playerCritChance;
+	double playerCritDamage;
+	
+	
+	/*
 	char name[50];
 	int  ID;
 
@@ -42,10 +64,9 @@ int main() {
 	float critDamage;
 	//critDamage = rand() % 500 + 100;
 	
-	long lumion; // Currency;
 	double temp = (double)rand();
 
-	printf("%lf", random);
-
+	printf("%lf", temp);
+	*/
 	return 0;
 };
