@@ -16,7 +16,7 @@ void healCaculator(double playerCritChance, double playerCritDamage, double play
 	HP = HP + attack;
 };
 
-void attackCaculator(double playerCritChance, double playerCritDamage,  double playerPhysicalResistance, int attack, int HP)
+void attackCalculator(double playerCritChance, double playerCritDamage,  double playerPhysicalResistance, int attack, int HP)
 {
 	double random;
 	random = rand() % 100, 1;
