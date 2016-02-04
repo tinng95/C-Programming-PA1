@@ -6,9 +6,6 @@ void attackCaculator(double playerCritChance, double playerCritDamage,  double p
 {
 	double random;
 	random = rand() % 100, 1;
-	playerCritDamage = rand() % 500 + 100;
-	playerCritChance = rand() % 100 + 1;
-	playerPhysicalResistance = rand() % 80 + 20;
 
 	if (random <= playerCritChance) {
 		attack = (int)(((double)attack * (playerCritDamage /100)) * (playerPhysicalResistance / 100));}
@@ -18,7 +15,6 @@ void attackCaculator(double playerCritChance, double playerCritDamage,  double p
 
 	HP = HP - attack;
 };
-
 
 void createPlayerCharacter(char *roleName, int *playerHealth, int *playerAttack, double *playerResistance, double *playerCritChance, double *playerCritDamage)
 {
@@ -31,7 +27,7 @@ void createPlayerCharacter(char *roleName, int *playerHealth, int *playerAttack,
 
 void introduction() {
 	printf("Welcome to your Programming Assignment 1!/n");
-	printf("In this assigment, you will have to choose one of the 3 classesto defeat Lord Evil./n");
+	printf("In this assigment, you will have to choose one of the 3 classesto defeat Silva./n");
 	printf("You can choose to be a WARRIOR, a MAGE or an Archer./n");
 	printf("Please select your class with the coresponding numbers:/n ");
 	printf("1. Warrior/n ");
@@ -39,6 +35,11 @@ void introduction() {
 	printf("1. Archer/n ");
 }
 
+int getUserInput() {
+	int number;
+	scanf("%d", number);
+	return number;
+}
 
 int main() {
 	//Student Info
@@ -56,26 +57,16 @@ int main() {
 	double playerPhysicalResistance;
 	double playerCritChance;
 	double playerCritDamage;
+
+
+	//BOSS STATS
+	char bossName[10] = ('S', 'i', 'l', 'v', 'a', );
+
+
+	//FUNCTION
 	introduction();
+	getUserInput();
 	attackCaculator(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack, &playerHP);
-	/*
-	char name[50];
-	int  ID;
 
-	int health = 500;
-	int attack= 40;
-	
-	double physicalResistance;
-	//physicalResistance = rand() % 100, 1;
-	double critChance;
-	//critChance = rand() % 100 + 1;
-
-	float critDamage;
-	//critDamage = rand() % 500 + 100;
-	
-	double temp = (double)rand();
-
-	printf("%lf", temp);
-	*/
 	return 0;
 };
