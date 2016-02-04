@@ -30,7 +30,7 @@ void attackCaculator(double playerCritChance, double playerCritDamage,  double p
 	HP = HP - attack;
 };
 
-void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack, double *playerResistance, double *playerCritChance, double *playerCritDamage)
+void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack, double *playerPhsycialResistance, double *playerCritChance, double *playerCritDamage)
 {/*Please create the following:*/
 	switch(*roleNumber)
 {
@@ -38,7 +38,7 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 			/*BEGINNING of your solution*/
 			*playerHealth = 10000; //Set *playersHealth to 10000
 			*playerAttack = 300; //Set *playerAttack to 300;
-			*playerResistance = (rand() % 90 + 70) / 100; //Generate a random number inclusively between the range of 70 to 90 then divide by 100
+			*playerPhsycialResistance = (rand() % 90 + 70) / 100; //Generate a random number inclusively between the range of 70 to 90 then divide by 100
 			*playerCritChance = (rand() % 30 + 10) / 100; //Genearte a random number inclusively betwen the range of 10 to 30 then divide by 100
 			*playerCritDamage = (rand() % 700 + 1000) / 100; // Generate a random number inclusively between the range of 700 to 1000 then divide by 100
 			/*END of your solution*/
@@ -47,7 +47,7 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 			/*BEGINNING of your solution*/
 			*playerHealth = 4000; //Set *playersHealth to 4000
 			*playerAttack = 1000; //Set *playerAttack to 1000;
-			*playerResistance = (rand() % 40 + 20) / 100; //Generate a random number inclusively between the range of 20 to 40 then divide by 100
+			*playerPhsycialResistance = (rand() % 40 + 20) / 100; //Generate a random number inclusively between the range of 20 to 40 then divide by 100
 			*playerCritChance = (rand() % 50 + 20) / 100; //Genearte a random number inclusively betwen the range of 20 to 50 then divide by 100
 			*playerCritDamage = (rand() % 500 + 200) / 100; // Generate a random number inclusively between the range of 200 to 500 then divide by 100
 			/*END of your solution*/
@@ -56,7 +56,7 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 			/*BEGINNING of your solution*/
 			*playerHealth = 6000; //Set *playersHealth to 6000
 			*playerAttack = 600; //Set *playerAttack to 600;
-			*playerResistance = (rand() % 60 + 30) / 100; //Generate a random number inclusively between the range of 30 to 60 then divide by 100
+			*playerPhsycialResistance = (rand() % 60 + 30) / 100; //Generate a random number inclusively between the range of 30 to 60 then divide by 100
 			*playerCritChance = (rand() % 90 + 70) / 100; //Genearte a random number inclusively betwen the range of 70 to 90 then divide by 100
 			*playerCritDamage = (rand() % 600 + 400) / 100; // Generate a random number inclusively between the range of 400 to 600 then divide by 100
 			/*END of your solution*/
@@ -79,7 +79,7 @@ void introduction() {
 
 int getUserInput() {
 	int number;
-	scanf("%d", number);
+	scanf("%d", &number);
 	return number;
 }
 
@@ -89,10 +89,10 @@ int main() {
 	int ID;
 
 	//CHARACTER 
-	const char roleName1[10]= ('w','a','r','r','i','o','r');
-	const char roleName2[10]= ('m','a','g','e');
-	const char roleName3[10]= ('a','r','c','h','e','r'); 
-	int playerHP;
+	const char roleName1[10] = { 'W','a','r','r','i','o','r' };
+	const char roleName2[10] = { 'M','a','g','e' };
+	const char roleName3[10] = { 'A','r','c','h','e','r' };
+	int playerHealth;
 	int playerAttack;
 
 	//CHARACTER STATS
@@ -102,7 +102,7 @@ int main() {
 	
 	
 	//BOSS STATS
-	char bossName[10] = ('S', 'i', 'l', 'v', 'a');
+	char bossName[10] = { 'S', 'i', 'l', 'v', 'a' };
 	int bossHP;
 	int bossAttack;
 	double bossPhysicalResistance;
@@ -112,7 +112,8 @@ int main() {
 	//FUNCTION
 	introduction();
 	getUserInput();
-	attackCaculator(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack, &playerHP);
+	createPlayerCharacter(getUserInput(), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
+	attackCalculator(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack, &playerHealth);
 
 	return 0;
 };
