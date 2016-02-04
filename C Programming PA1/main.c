@@ -88,6 +88,8 @@ int getUserInput() {
 	return number;
 }
 
+
+
 int main() {
 	//Student Info
 	char name[50];
