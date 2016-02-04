@@ -118,7 +118,6 @@ int main() {
 	introduction();
 	getUserInput();
 	createPlayerCharacter(getUserInput(), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
-	attackCaculator(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack, &playerHealth);
 
 	return 0;
 };
