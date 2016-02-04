@@ -37,27 +37,27 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 			/*BEGINNING of your solution*/
 			*playerHealth = 10000; //Set *playersHealth to 10000
 			*playerAttack = 300; //Set *playerAttack to 300;
-			*playerResistance = rand() % 90 + 70; //Generate a random number inclusively between the range of 70 to 90
-			*playerCritChance = rand() % 30 + 10; //Genearte a random number inclusively betwen the range of 10 to 30
-			*playerCritDamage = rand() % 700 + 1000; // Generate a random number inclusively between the range of 700 to 1000
+			*playerResistance = (rand() % 90 + 70) / 100; //Generate a random number inclusively between the range of 70 to 90 then divide by 100
+			*playerCritChance = (rand() % 30 + 10) / 100; //Genearte a random number inclusively betwen the range of 10 to 30 then divide by 100
+			*playerCritDamage = (rand() % 700 + 1000) / 100; // Generate a random number inclusively between the range of 700 to 1000 then divide by 100
 			/*END of your solution*/
 			break;
 		case 2: //Mage: Low: health and resistance. Medium: crit damage and crit chance High: attack
 			/*BEGINNING of your solution*/
 			*playerHealth = 4000; //Set *playersHealth to 4000
 			*playerAttack = 1000; //Set *playerAttack to 1000;
-			*playerResistance = rand() % 40 + 20; //Generate a random number inclusively between the range of 20 to 40
-			*playerCritChance = rand() % 50 + 20; //Genearte a random number inclusively betwen the range of 20 to 50
-			*playerCritDamage = rand() % 200 + 300; // Generate a random number inclusively between the range of 200 to 300
+			*playerResistance = (rand() % 40 + 20) / 100; //Generate a random number inclusively between the range of 20 to 40 then divide by 100
+			*playerCritChance = (rand() % 50 + 20) / 100; //Genearte a random number inclusively betwen the range of 20 to 50 then divide by 100
+			*playerCritDamage = (rand() % 500 + 200) / 100; // Generate a random number inclusively between the range of 200 to 500 then divide by 100
 			/*END of your solution*/
 			break;
 		case 3://Archer: Medium: health, attack and resistance. High: crit chance and crit damage
 			/*BEGINNING of your solution*/
 			*playerHealth = 6000; //Set *playersHealth to 6000
 			*playerAttack = 600; //Set *playerAttack to 600;
-			*playerResistance = rand() % 60 + 30; //Generate a random number inclusively between the range of 30 to 60
-			*playerCritChance = rand() % 90 + 70; //Genearte a random number inclusively betwen the range of 70 to 90
-			*playerCritDamage = rand() % 600 + 400; // Generate a random number inclusively between the range of 400 to 600
+			*playerResistance = (rand() % 60 + 30) / 100; //Generate a random number inclusively between the range of 30 to 60 then divide by 100
+			*playerCritChance = (rand() % 90 + 70) / 100; //Genearte a random number inclusively betwen the range of 70 to 90 then divide by 100
+			*playerCritDamage = (rand() % 600 + 400) / 100; // Generate a random number inclusively between the range of 400 to 600 then divide by 100
 			/*END of your solution*/
 			break;
 	}
