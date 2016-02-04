@@ -1,7 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void healCaculator(double playerCritChance, double playerCritDamage, double playerPhysicalResistance, int attack, int HP)
+{
+	double random;
+	random = rand() % 100, 1;
 
+	if (random <= playerCritChance) {
+		attack = (int)(((double)attack * (playerCritDamage / 100)) * (playerPhysicalResistance / 100));
+	}
+	else {
+		attack = (int)((double)attack *(playerPhysicalResistance / 100));
+	}
+
+	HP = HP - attack;
+};
 void attackCaculator(double playerCritChance, double playerCritDamage,  double playerPhysicalResistance, int attack, int HP)
 {
 	double random;
@@ -86,7 +99,11 @@ int main() {
 	
 	//BOSS STATS
 	char bossName[10] = ('S', 'i', 'l', 'v', 'a');
-
+	int bossHP;
+	int bossAttack;
+	double bossPhysicalResistance;
+	double bosserCritChance;
+	double bosserCritDamage;
 	
 	//FUNCTION
 	introduction();
