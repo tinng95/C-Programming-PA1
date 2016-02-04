@@ -16,18 +16,19 @@ void healCaculator(double playerCritChance, double playerCritDamage, double play
 	HP = HP + attack;
 };
 
-void attackCalculator(int attackerAttack, double attackerCritChance, double attackerCritDamage, int *targetHealth, double targetPhysicalResistance)
+double calculateDamage(int attackerAttack, double attackerCritChance, double attackerCritDamage, double targetPhysicalResistance)
 {
 	double random;
-	random = rand() % 100, 1;
+	double damageDealt;
+	random = (rand() % 100, 1) / 100;
 
 	if (random <= attackerCritChance) {
-		attackerAttack = (int)(((double)attackerAttack * (attackerCritDamage /100)) * (targetPhysicalResistance / 100));}
+		damageDealt = (int)(((double)attackerAttack * (attackerCritDamage)) * (targetPhysicalResistance));}
 	else {
-		attackerAttack = (int)((double)attackerAttack *(targetPhysicalResistance / 100));
+		damageDealt = (int)((double)attackerAttack *(targetPhysicalResistance));
 	}
 
-	*targetHealth -= attackerAttack;
+	return damageDealt;
 };
 
 void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack, double *playerPhsycialResistance, double *playerCritChance, double *playerCritDamage)
