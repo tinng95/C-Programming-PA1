@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void healCaculator(double playerCritChance, double playerCritDamage, double playerPhysicalResistance, int attack, int HP)
+void calculateHealAmount(double playerCritChance, double playerCritDamage, double playerPhysicalResistance, int attack, int HP)
 {
 	double random;
 	random = rand() % 100, 1;
@@ -16,7 +16,7 @@ void healCaculator(double playerCritChance, double playerCritDamage, double play
 	HP = HP + attack;
 };
 
-double calculateDamage(int attackerAttack, double attackerCritChance, double attackerCritDamage, double targetPhysicalResistance)
+double calculateDamageAmount(int attackerAttack, double attackerCritChance, double attackerCritDamage, double targetPhysicalResistance)
 {
 	double random;
 	double damageDealt;
