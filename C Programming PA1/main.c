@@ -29,12 +29,12 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 			*playerCritDamage = rand() % 700 + 1000; // Generate a random number inclusively between the range of 700 to 1000
 			/*END of your solution*/
 			break;
-		case 2: //Mage: Low: health and resistance. Medium: crit damage. High: crit chance and attack
+		case 2: //Mage: Low: health and resistance. Medium: crit damage and crit chance High: attack
 			/*BEGINNING of your solution*/
 			*playerHealth = 4000; //Set *playersHealth to 4000
 			*playerAttack = 1000; //Set *playerAttack to 1000;
 			*playerResistance = rand() % 40 + 20; //Generate a random number inclusively between the range of 20 to 40
-			*playerCritChance = rand() % 90 + 50; //Genearte a random number inclusively betwen the range of 50 to 90
+			*playerCritChance = rand() % 50 + 20; //Genearte a random number inclusively betwen the range of 20 to 50
 			*playerCritDamage = rand() % 200 + 300; // Generate a random number inclusively between the range of 200 to 300
 			/*END of your solution*/
 			break;
