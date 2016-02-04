@@ -60,7 +60,7 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 			*playerCritChance = (rand() % 90 + 70) / 100; //Genearte a random number inclusively betwen the range of 70 to 90 then divide by 100
 			*playerCritDamage = (rand() % 600 + 400) / 100; // Generate a random number inclusively between the range of 400 to 600 then divide by 100
 			/*END of your solution*/
-			break;
+			break ;
 	}
 };
 
