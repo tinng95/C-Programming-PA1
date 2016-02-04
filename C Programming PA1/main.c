@@ -1,38 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void calculateHealAmount(double playerCritChance, double playerCritDamage, double playerPhysicalResistance, int attack, int HP)
+//Property of Daniel and Tin
+
+double calculateHealAmount(double playerCritChance, double playerCritDamage, double playerPhysicalResistance, int attack, int HP)
 {
+	double healAmount;
 	double random;
-	random = rand() % 100, 1;
+	random = rand() % 100 + 1;
 
-	if (random <= playerCritChance) {
-		attack = (int)(((double)attack * (playerCritDamage / 100)) * (playerPhysicalResistance / 100));
+	if (random <= playerCritChance) 
+	{
+		healAmount = (int)((((double)attack * 0.2) * (playerCritDamage)) * (playerPhysicalResistance + 1));
 	}
-	else {
-		attack = (int)((double)attack *(playerPhysicalResistance / 100));
+	else 
+	{
+		healAmount = (int)(((double)attack * 0.2) *(playerPhysicalResistance + 1));
 	}
-
-	HP = HP + attack;
+	return healAmount;
 };
 
 double calculateDamageAmount(int attackerAttack, double attackerCritChance, double attackerCritDamage, double targetPhysicalResistance)
 {
 	double random;
 	double damageDealt;
-	random = (rand() % 100, 1) / 100;
+	random = (rand() % 100 + 1) / 100;
 
-	if (random <= attackerCritChance) {
-		damageDealt = (int)(((double)attackerAttack * (attackerCritDamage)) * (targetPhysicalResistance));}
-	else {
+	if (random <= attackerCritChance) 
+	{
+		damageDealt = (int)(((double)attackerAttack * (attackerCritDamage)) * (targetPhysicalResistance));
+	}
+	else 
+	{
 		damageDealt = (int)((double)attackerAttack *(targetPhysicalResistance));
 	}
-
 	return damageDealt;
 };
 
 void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack, double *playerPhysicalResistance, double *playerCritChance, double *playerCritDamage)
-{/*Please create the following:*/
+{
 	switch(roleNumber)
 {
 		case 1: //Warrior: Low: attack, critChance. High: health, resistance, and crit damage
@@ -49,7 +55,7 @@ void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack,
 			*playerHealth = 4000; //Set *playersHealth to 4000
 			*playerAttack = 1000; //Set *playerAttack to 1000;
 			*playerPhysicalResistance = 30 / 100; //Set *playerPhysicalResistance to 30 / 100;
-			*playerCritChance = 30 / 100; //Set *playerCritChance to 30 / 100;
+			*playerCritChance = 40 / 100; //Set *playerCritChance to 40 / 100;
 			*playerCritDamage = 400 / 100; //Set *playerCritDamage to 400 / 100;
 			/*END of your solution*/
 			break;
@@ -65,13 +71,15 @@ void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack,
 	}
 };
 
-void createBoss(int *bossHealth, int *bossAttack, double *bossPhsycialResistance, double *bossCritChance, double *bossCritDamage)
+void createBoss(int *bossHealth, int *bossAttack, double *bossPhysicalResistance, double *bossCritChance, double *bossCritDamage)
 {
-	*bossHealth = 50000;
-	*bossAttack = 500;
-	*bossPhsycialResistance = (rand() % 30 + 60) / 100;
-	*bossCritChance = (rand() % 10 + 20) / 100;
-	*bossCritDamage = (rand() % 100 + 250) / 100;
+	/*BEGINNING of your solution*/
+	*bossHealth = 50000; //Set *bossHealth to 50000
+	*bossAttack = (rand() % 600 + 400); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
+	*bossPhysicalResistance = (rand() % 60 + 30) / 100; //Set *bossPhysicalResistance to a randomized number in the range between 30 to 60 inclusively
+	*bossCritChance = (rand() % 20 + 10) / 100; //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively
+	*bossCritDamage = (rand() % 250 + 100) / 100; //Set *bossCritDamage to a randomized number in the range between 100 to 250 inclusively
+	/*END of your solution*/
 };
 void introduction() {
 	printf("Welcome to your Programming Assignment 1!\n");
