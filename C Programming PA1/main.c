@@ -64,17 +64,22 @@ void createPlayerCharacter(int *roleNumber, int *playerHealth, int *playerAttack
 	}
 };
 
-void createBoss(int *bossHealth, int *bossAttack, double *bossResistance, double *bossCritChance, double *bossCritDamage) 
+void createBoss(int *bossHealth, int *bossAttack, double *bossPhsycialResistance, double *bossCritChance, double *bossCritDamage)
 {
+	*bossHealth = 50000;
+	*bossAttack = 500;
+	*bossPhsycialResistance = (rand() % 30 + 60) / 100;
+	*bossCritChance = (rand() % 10 + 20) / 100;
+	*bossCritDamage = (rand() % 100 + 250) / 100;
 };
 void introduction() {
-	printf("Welcome to your Programming Assignment 1!/n");
-	printf("In this assigment, you will have to choose one of the 3 classesto defeat Silva./n");
-	printf("You can choose to be a WARRIOR, a MAGE or an Archer./n");
-	printf("Please select your class with the coresponding numbers:/n ");
-	printf("1. Warrior/n ");
-	printf("1. Mage/n ");
-	printf("1. Archer/n ");
+	printf("Welcome to your Programming Assignment 1!\n");
+	printf("In this assigment, you will have to choose one of the 3 classesto defeat Silva.\n");
+	printf("You can choose to be a WARRIOR, a MAGE or an Archer.\n ");
+	printf("1. Warrior\n ");
+	printf("2. Mage\n ");
+	printf("3. Archer\n");
+	printf("Please select your class with the coresponding numbers: ");
 }
 
 int getUserInput() {
@@ -113,7 +118,7 @@ int main() {
 	introduction();
 	getUserInput();
 	createPlayerCharacter(getUserInput(), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
-	attackCalculator(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack, &playerHealth);
+	attackCaculator(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack, &playerHealth);
 
 	return 0;
 };
