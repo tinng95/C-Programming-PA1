@@ -29,16 +29,15 @@ void createPlayerCharacter(char *roleName, int *playerHealth, int *playerAttack,
 	}
 };
 
-void introduction(int warriorHP, int mageHP, int archerHP, int warriorAttack, int mageAttack, int archerAttack) {
+void introduction() {
 	printf("Welcome to your Programming Assignment 1!/n");
 	printf("In this assigment, you will have to choose one of the 3 classesto defeat Lord Evil./n");
-	printf("You can choose to be a WARRIOR, a MAGE or an Archer varied by thier stats./n");
-    printf("1. Warrior's HP: %d , Warrior's Attack: %d/n", warriorHP,warriorAttack);
-	printf("2. Mage's HP: %d , Mage's Attack: %d/n", mageHP, mageAttack);
-	printf("3. Archer's HP: %d , Archer's Attack: %d/n", archerHP, archerAttack);
-	printf("Please select your class with one of the number above: ");
+	printf("You can choose to be a WARRIOR, a MAGE or an Archer./n");
+	printf("Please select your class with the coresponding numbers:/n ");
+	printf("1. Warrior/n ");
+	printf("1. Mage/n ");
+	printf("1. Archer/n ");
 }
-
 
 
 int main() {
@@ -50,20 +49,15 @@ int main() {
 	const char roleName1[10]= ('w','a','r','r','i','o','r');
 	const char roleName2[10]= ('m','a','g','e');
 	const char roleName3[10]= ('a','r','c','h','e','r'); 
-	int warriorHP;
-	int mageHP;
-	int archerHP;
-
-	int warriorAttack;
-	int mageAttack;
-	int archerAttack;
+	int playerHP;
+	int playerAttack;
 
 	//CHARACTER STATS
 	double playerPhysicalResistance;
 	double playerCritChance;
 	double playerCritDamage;
-	
-	attackCaculator(playerCritChance, playerCritDamage, playerPhysicalResistance, warriorAttack, &warriorHP);
+	introduction();
+	attackCaculator(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack, &playerHP);
 	/*
 	char name[50];
 	int  ID;
