@@ -3,7 +3,7 @@
 
 //Property of Daniel and Tin
 
-double calculateHealAmount(double playerCritChance, double playerCritDamage, double playerPhysicalResistance, int attack, int HP)
+double calculateHealAmount(double playerCritChance, double playerCritDamage, double playerPhysicalResistance, int attack)
 {
 	double healAmount;
 	double random;
@@ -25,7 +25,8 @@ double calculateDamageAmount(int attackerAttack, double attackerCritChance, doub
 	double random;
 	double damageDealt;
 	random = (rand() % 100 + 1) / 100;
-
+	printf("%d\n", random);
+	printf("%d\n", attackerCritChance);
 	if (random <= attackerCritChance) 
 	{
 		damageDealt = (int)(((double)attackerAttack * (attackerCritDamage)) * (targetPhysicalResistance));
@@ -34,6 +35,7 @@ double calculateDamageAmount(int attackerAttack, double attackerCritChance, doub
 	{
 		damageDealt = (int)((double)attackerAttack *(targetPhysicalResistance));
 	}
+	printf("%d\n", damageDealt);
 	return damageDealt;
 };
 
@@ -44,9 +46,11 @@ void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack,
 		case 1: //Warrior: Low: attack, critChance. High: health, resistance, and crit damage
 			/*BEGINNING of your solution*/
 			*playerHealth = 10000; //Set *playersHealth to 10000
+			printf("%d in create \n", *playerHealth);
 			*playerAttack = 300; //Set *playerAttack to 300;
 			*playerPhysicalResistance = 80 / 100; //Set *playerPhysicalResistance to 80 / 100;
 			*playerCritChance = 20 / 100; //Set *playerCritChance to 20 / 100;
+			printf("%d in create \n", *playerCritChance);
 			*playerCritDamage = 800 / 100; //Set *playerCritDamage to 800 / 100;
 			/*END of your solution*/
 			break;
@@ -126,7 +130,7 @@ int main() {
 	
 	//BOSS STATS
 	char bossName[10] = { 'S', 'i', 'l', 'v', 'a' };
-	int bossHP;
+	int bossHealth;
 	int bossAttack;
 	double bossPhysicalResistance;
 	double bossCritChance;
@@ -135,9 +139,25 @@ int main() {
 	//FUNCTION
 	introduction();
 	createPlayerCharacter(getUserInput(), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
-	createBoss(&bossHP, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
+	createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
 
-
-
+	while (bossHealth > 0)
+	{
+		switch (playerMove()) {
+		case 1:
+			bossHealth = bossHealth - calculateDamageAmount(playerAttack, playerCritChance, playerCritDamage, playerPhysicalResistance);
+			playerHealth = playerHealth - calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
+			printf("%d\n", playerHealth);
+			printf("%d\n", bossHealth);
+			break;
+		case 2:
+			playerHealth = playerHealth + calculateHealAmount(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack);
+			playerHealth = playerHealth + calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
+			printf("%d\n", playerHealth);
+			printf("%d\n", bossHealth);
+			break;
+		}
+	}
+	
 	return 0;
 };
