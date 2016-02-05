@@ -134,7 +134,7 @@ int main() {
 	const char roleName3[10] = { 'A','r','c','h','e','r' };
 	int playerHealth;
 	int playerAttack;
-
+	int playerMaxHealth;
 	//CHARACTER STATS
 	double playerPhysicalResistance;
 	double playerCritChance;
@@ -151,7 +151,7 @@ int main() {
 	
 	//FUNCTION
 	introduction();
-	createPlayerCharacter(getUserInput(3), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
+	createPlayerCharacter(getUserInput(3), &playerHealth, &playerMaxHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
 	createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
 	
 	while (bossHealth > 0)
