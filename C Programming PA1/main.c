@@ -37,13 +37,14 @@ double calculateDamageAmount(int attackerAttack, double attackerCritChance, doub
 	return damageDealt;
 };
 
-void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack, double *playerPhysicalResistance, double *playerCritChance, double *playerCritDamage)
+void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerMaxHealth, int *playerAttack, double *playerPhysicalResistance, double *playerCritChance, double *playerCritDamage)
 {
 	switch(roleNumber)
 {
 		case 1: //Warrior: Low: attack, critChance. High: health, resistance, and crit damage
 			/*BEGINNING of your solution*/
 			*playerHealth = 10000; //Set *playersHealth to 10000;
+			*playerMaxHealth = 10000; //Set *playerMaxHealth to 10000;
 			*playerAttack = 300; //Set *playerAttack to 300;
 			*playerPhysicalResistance = 0.80; //Set *playerPhysicalResistance to 0.80;
 			*playerCritChance = 0.20; //Set *playerCritChance to 0.20;
@@ -52,7 +53,8 @@ void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack,
 			break;
 		case 2: //Mage: Low: health and resistance. Medium: crit damage and crit chance High: attack
 			/*BEGINNING of your solution*/
-			*playerHealth = 4000; //Set *playersHealth to 4000
+			*playerHealth = 4000; //Set *playersHealth to 4000;
+			*playerMaxHealth = 4000; //Set *playerMaxHealth to 4000;
 			*playerAttack = 1000; //Set *playerAttack to 1000;
 			*playerPhysicalResistance = 0.30; //Set *playerPhysicalResistance to 0.30;
 			*playerCritChance = 0.40; //Set *playerCritChance to 0.40;
@@ -61,7 +63,8 @@ void createPlayerCharacter(int roleNumber, int *playerHealth, int *playerAttack,
 			break;
 		case 3://Archer: Medium: health, attack and resistance. High: crit chance and crit damage
 			/*BEGINNING of your solution*/
-			*playerHealth = 6000; //Set *playersHealth to 6000
+			*playerHealth = 6000; //Set *playersHealth to 6000;
+			*playerMaxHealth = 6000; //Set **playerMaxHealth to 6000;
 			*playerAttack = 600; //Set *playerAttack to 600;
 			*playerPhysicalResistance = 0.50; //Set *playerPhysicalResistance to0.50;
 			*playerCritChance = 0.80; //Set *playerCritChance to 0.80;
@@ -153,6 +156,8 @@ int main() {
 	
 	//FUNCTION
 	introduction();
+
+
 	createPlayerCharacter(getUserInput(3), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
 	createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
 	
