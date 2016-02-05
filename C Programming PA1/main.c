@@ -127,22 +127,23 @@ int main() {
 	introduction();
 	createPlayerCharacter(getUserInput(), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
 	createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
-
+	
 	while (bossHealth > 0)
 	{
-		switch (playerMove()) {
-		case 1:
-			bossHealth = bossHealth - calculateDamageAmount(playerAttack, playerCritChance, playerCritDamage, playerPhysicalResistance);
-			playerHealth = playerHealth - calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
-			printf("%d\n", playerHealth);
-			printf("%d\n", bossHealth);
-			break;
-		case 2:
-			playerHealth = playerHealth + calculateHealAmount(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack);
-			playerHealth = playerHealth + calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
-			printf("%d\n", playerHealth);
-			printf("%d\n", bossHealth);
-			break;
+		switch (playerMove()) 
+		{
+			case 1:
+				bossHealth = bossHealth - calculateDamageAmount(playerAttack, playerCritChance, playerCritDamage, playerPhysicalResistance);
+				playerHealth = playerHealth - calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
+				printf("%d\n", playerHealth);
+				printf("%d\n", bossHealth);
+				break;
+			case 2:
+				playerHealth = playerHealth + calculateHealAmount(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack);
+				playerHealth = playerHealth + calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
+				printf("%d\n", playerHealth);
+				printf("%d\n", bossHealth);
+				break;
 		}
 	}
 
