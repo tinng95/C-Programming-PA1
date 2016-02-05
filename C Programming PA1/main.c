@@ -89,7 +89,8 @@ void introduction() {
 	printf("1. Warrior\n ");
 	printf("2. Mage\n ");
 	printf("3. Archer\n");
-	printf("Please select your class with the coresponding numbers: ");
+	printf("Please select your class with the coresponding numbers. ");
+	printf("Selection: ");
 }
 
 int playerMove()
@@ -97,6 +98,7 @@ int playerMove()
 	int choice;
 	printf("1. Attack\n");
 	printf("2. Heal\n");
+	printf("Selection: ");
 	choice = getUserInput(2);
 	return choice;
 }
