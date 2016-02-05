@@ -145,17 +145,28 @@ int main() {
 			case 1:
 				bossHealth = bossHealth - calculateDamageAmount(playerAttack, playerCritChance, playerCritDamage, playerPhysicalResistance);
 				playerHealth = playerHealth - calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
-				printf("%d\n", playerHealth);
-				printf("%d\n", bossHealth);
 				break;
 			case 2:
 				playerHealth = playerHealth + calculateHealAmount(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack);
 				playerHealth = playerHealth + calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
-				printf("%d\n", playerHealth);
-				printf("%d\n", bossHealth);
 				break;
 		}
+		if (playerHealth <= 0)
+		{
+			printf("<----------------------------------------------------------------------------->\n");
+			printf("You Died!, but hey at least you got the game working. XD\n");
+		}
+		else if (bossHealth <= 0)
+		{
+			printf("<----------------------------------------------------------------------------->\n");
+			printf("Congrationlation you beat the boss, now go back to writing code.\n");
+		}
+		else
+		{
+			printf("<----------------------------------------------------------------------------->\n");
+			printf("Player Health: %d\n", playerHealth);
+			printf("Boss Healt: %d\n", bossHealth);
+		}
 	}
-
-	return 0;
+return 0;
 };
