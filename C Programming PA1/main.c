@@ -11,11 +11,11 @@ double calculateHealAmount(double playerCritChance, double playerCritDamage, dou
 
 	if (random <= playerCritChance) 
 	{
-		healAmount = (int)((((double)attack * 0.4) * (playerCritDamage)) * (playerPhysicalResistance + 1));
+		healAmount = ((((double)attack * 0.4) * (playerCritDamage)) * (playerPhysicalResistance + 1));
 	}
 	else 
 	{
-		healAmount = (int)(((double)attack * 0.4) *(playerPhysicalResistance + 1));
+		healAmount = (((double)attack * 0.4) *(playerPhysicalResistance + 1));
 	}
 	return healAmount;
 };
@@ -128,6 +128,18 @@ int getUserInput(int numOfChoices) {
 	return number;
 }
 
+void applyHealAmount(int *targetHealth, int *targetMaxHealth, double healAmount)
+{
+	if (*targetHealth + healAmount > *targetMaxHealth)
+	{
+		*targetHealth = *targetMaxHealth;
+	}
+	else
+	{
+		*targetHealth += healAmount;
+	}
+}
+
 int main() {
 	//Student Info
 	char name[50];
@@ -158,35 +170,40 @@ int main() {
 	introduction();
 	createPlayerCharacter(getUserInput(3), &playerHealth, &playerMaxHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
 	createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
-	
-	while (bossHealth > 0)
+	while (1 == 1) //Game Loop
 	{
-		switch (playerMove()) 
+		while (bossHealth > 0) // Gameplay Loop
 		{
+			switch (playerMove())
+			{
 			case 1:
 				bossHealth = bossHealth - calculateDamageAmount(playerAttack, playerCritChance, playerCritDamage, playerPhysicalResistance);
-				playerHealth = playerHealth - calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
 				break;
 			case 2:
-				playerHealth = playerHealth + calculateHealAmount(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack);
-				playerHealth = playerHealth + calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
+				applyHealAmount(&playerHealth, &playerMaxHealth, calculateHealAmount(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack));
 				break;
-		}
-		if (playerHealth <= 0)
-		{
-			printf("<----------------------------------------------------------------------------->\n");
-			printf("You Died!, but hey at least you got the game working. XD\n");
-		}
-		else if (bossHealth <= 0)
-		{
-			printf("<----------------------------------------------------------------------------->\n");
-			printf("Congrationlation you beat the boss, now go back to writing code.\n");
-		}
-		else
-		{
-			printf("<----------------------------------------------------------------------------->\n");
+			}
 			printf("Player Health: %d\n", playerHealth);
-			printf("Boss Healt: %d\n", bossHealth);
+			playerHealth = playerHealth - calculateDamageAmount(bossAttack, bossCritChance, bossCritDamage, bossPhysicalResistance);
+			if (playerHealth <= 0)
+			{
+				printf("<----------------------------------------------------------------------------->\n");
+				printf("You Died!, but hey at least you got the game working. XD\n");
+				break;
+			}
+			else if (bossHealth <= 0)
+			{
+				printf("<----------------------------------------------------------------------------->\n");
+				printf("Congrationlation you beat the boss, now go back to writing code.\n");
+				break;
+			}
+			else
+			{
+				printf("<----------------------------------------------------------------------------->\n");
+				printf("Player Health: %d\n", playerHealth);
+				printf("Boss Health: %d\n", bossHealth);
+				break;
+			}
 		}
 	}
 return 0;
