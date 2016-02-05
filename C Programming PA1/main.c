@@ -81,6 +81,15 @@ void createBoss(int *bossHealth, int *bossAttack, double *bossPhysicalResistance
 	*bossCritDamage = (rand() % 250 + 100) / 100; //Set *bossCritDamage to a randomized number in the range between 100 to 250 inclusively
 	/*END of your solution*/
 };
+
+int playerMove()
+{
+	int choice;
+	printf("1. Attack\n");
+	printf("2. Heal\n");
+	scanf("%d", &choice);
+	return choice;
+}
 void introduction() {
 	printf("Welcome to your Programming Assignment 1!\n");
 	printf("In this assigment, you will have to choose one of the 3 classesto defeat Silva.\n");
