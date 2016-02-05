@@ -75,21 +75,13 @@ void createBoss(int *bossHealth, int *bossAttack, double *bossPhysicalResistance
 {
 	/*BEGINNING of your solution*/
 	*bossHealth = 50000; //Set *bossHealth to 50000
-	*bossAttack = (rand() % 600 + 400); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
-	*bossPhysicalResistance = (rand() % 60 + 30) / 100; //Set *bossPhysicalResistance to a randomized number in the range between 30 to 60 inclusively
-	*bossCritChance = (rand() % 20 + 10) / 100; //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively
-	*bossCritDamage = (rand() % 250 + 100) / 100; //Set *bossCritDamage to a randomized number in the range between 100 to 250 inclusively
+	*bossAttack = (rand() % 600 + 400.0); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
+	*bossPhysicalResistance = (rand() % 60 + 30.0) / 100; //Set *bossPhysicalResistance to a randomized number in the range between 30 to 60 inclusively
+	*bossCritChance = (rand() % 20 + 10.0) / 100; //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively
+	*bossCritDamage = (rand() % 250 + 100.0) / 100; //Set *bossCritDamage to a randomized number in the range between 100 to 250 inclusively
 	/*END of your solution*/
 };
 
-int playerMove()
-{
-	int choice;
-	printf("1. Attack\n");
-	printf("2. Heal\n");
-	scanf("%d", &choice);
-	return choice;
-}
 void introduction() {
 	printf("Welcome to your Programming Assignment 1!\n");
 	printf("In this assigment, you will have to choose one of the 3 classesto defeat Silva.\n");
@@ -98,6 +90,15 @@ void introduction() {
 	printf("2. Mage\n ");
 	printf("3. Archer\n");
 	printf("Please select your class with the coresponding numbers: ");
+}
+
+int playerMove()
+{
+	int choice;
+	printf("1. Attack\n");
+	printf("2. Heal\n");
+	scanf("%d", &choice);
+	return choice;
 }
 
 int getUserInput() {
