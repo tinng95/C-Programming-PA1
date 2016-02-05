@@ -97,13 +97,30 @@ int playerMove()
 	int choice;
 	printf("1. Attack\n");
 	printf("2. Heal\n");
-	scanf("%d", &choice);
+	choice = getUserInput(2);
 	return choice;
 }
 
-int getUserInput() {
+int getUserInput(int numOfChoices) {
 	int number;
-	scanf("%d", &number);
+	while (1 == 1) // Always true, C is stupid
+	{
+		scanf("%d", &number);
+		for (int i = 1; i <= numOfChoices; i++) // Loops through the possible choices
+		{
+			if (number == i)
+			{
+				return i;
+			}
+		}
+		//Error Message
+		//fflush(stdin); //Flush input buffer
+		fflush(stdin);
+		printf("<----------------------------------------------------------------------------->\n");
+		printf("Invalid Input Error: Please enter a one of the number above!\n");
+		
+	}
+
 	return number;
 }
 
@@ -135,7 +152,7 @@ int main() {
 	
 	//FUNCTION
 	introduction();
-	createPlayerCharacter(getUserInput(), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
+	createPlayerCharacter(getUserInput(3), &playerHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
 	createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
 	
 	while (bossHealth > 0)
