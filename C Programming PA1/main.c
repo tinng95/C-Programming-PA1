@@ -114,8 +114,7 @@ int getUserInput(int numOfChoices) {
 			}
 		}
 		//Error Message
-		//fflush(stdin); //Flush input buffer
-		fflush(stdin);
+		fseek(stdin, 0, SEEK_END); //Flush input buffer
 		printf("<----------------------------------------------------------------------------->\n");
 		printf("Invalid Input Error: Please enter a one of the number above!\n");
 		
