@@ -221,14 +221,18 @@ int updateGame(int opCode, double *updateGameParameters[])
 	0: playerHealth;
 	1: playerMaxHealth;
 	2: playerAttack;
-	3: playerPhysicalResistance
-	4: playerCritChance;
-	5: playerCritDamage;
-	6: bossHealth;
-	7: bossAttack;
-	8: bossPhysicalResistance;
-	9: bossCritChance;
-	10: bossCritDamage;
+	3: playerMaxPhysicalResistance
+	4: playerMinPhysicalResistance;
+	5: playerCritChance;
+	6: playerMaxCritDamage;
+	7: playerMinCritDamage;
+	8: bossHealth;
+	9: bossAttack;
+	10: bossMaxPhysicalResistance;
+	11: bossMinPhysicalResistance;
+	12: bossCritChance;
+	13: bossMaxCritDmg;
+	14: bossMinCritDmg;
 	*/
 	//FUNCTION
 	int renderOpCode = -1;
@@ -311,18 +315,22 @@ int main() {
 	double playerAttack;
 	double playerMaxHealth;
 	//CHARACTER STATS
-	double playerPhysicalResistance;
+	double playerMaxPhysicalResistance;
+	double playerMinPhysicalResistance;
 	double playerCritChance;
-	double playerCritDamage;
+	double playerMaxCritDamage;
+	double playerMinCritDamage;
 
 
 	//BOSS STATS
 	char bossName[10] = { 'S', 'i', 'l', 'v', 'a' };
 	double bossHealth;
 	double bossAttack;
-	double bossPhysicalResistance;
+	double bossMaxPhysicalResistance;
+	double bossMinPhysicalResistance;
 	double bossCritChance;
-	double bossCritDamage;
+	double bossMaxCritDamage;
+	double bossMinCritDamage;
 
 	double *updateGameParameters[11];
 
@@ -331,17 +339,38 @@ int main() {
 	updateGameParameters[0] = &playerHealth;
 	updateGameParameters[1] = &playerMaxHealth;
 	updateGameParameters[2] = &playerAttack;
-	updateGameParameters[3] = &playerPhysicalResistance;
-	updateGameParameters[4] = &playerCritChance;
-	updateGameParameters[5] = &playerCritDamage;
+	updateGameParameters[3] = &playerMaxPhysicalResistance;
+	updateGameParameters[4] = &playerMinPhysicalResistance;
+	updateGameParameters[5] = &playerCritChance;
+	updateGameParameters[6] = &playerMaxCritDamage;
+	updateGameParameters[6] = &playerMinCritDamage;
 
 
-	updateGameParameters[6] = &bossHealth;
-	updateGameParameters[7] = &bossAttack;
-	updateGameParameters[8] = &bossPhysicalResistance;
-	updateGameParameters[9] = &bossCritChance;
-	updateGameParameters[10] = &bossCritDamage;
+	updateGameParameters[8] = &bossHealth;
+	updateGameParameters[9]  = &bossAttack;
+	updateGameParameters[10] = &bossMaxPhysicalResistance;
+	updateGameParameters[11] = &bossMinPhysicalResistance;
+	updateGameParameters[12] = &bossCritChance;
+	updateGameParameters[13] = &bossMaxCritDamage;
+	updateGameParameters[14] = &bossMinCritDamage;
 
+	/*
+	0: playerHealth;
+	1: playerMaxHealth;
+	2: playerAttack;
+	3: playerMaxPhysicalResistance;
+	4: playerMinPhysicalResistance;
+	5: playerCritChance;
+	6: playerMaxCritDamage;
+	7: playerMinCritDamage;
+	8: bossHealth;
+	9: bossAttack;
+	10: bossMaxPhysicalResistance;
+	11: bossMinPhysicalResistance;
+	12: bossCritChance;
+	13: bossMaxCritDmg;
+	14: bossMinCritDmg;
+	*/
 
 	render(0, NULL, NULL);
 	updateGame(0, updateGameParameters);
