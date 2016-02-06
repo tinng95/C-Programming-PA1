@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 //Property of Daniel and Tin
-
+//DO NOT OPEN
 double calculateHealAmount(double *attackerMinPhysicalResistance, double *attackerMaxPhysicalResistance, double *attackerMinCritDamage, double *attackerMaxCritDamage, double *attackerCritChance, double *attackerAttack)
 {
 	double healAmount;
@@ -21,8 +21,7 @@ double calculateHealAmount(double *attackerMinPhysicalResistance, double *attack
 			* ((double)(rand() % (int)(*attackerMaxPhysicalResistance - *attackerMinPhysicalResistance) + (int)*attackerMinPhysicalResistance) + 100) / 100.00));
 	}
 	return healAmount;
-};
-
+}
 double calculateDamageAmount(double *targetMinPhysicalResistance, double *targetMaxPhysicalResistance, double *attackerMinCritDamage, double *attackerMaxCritDamage, double *attackerCritChance, double *attackerAttack)
 {
 	double randomCrit;
@@ -42,7 +41,6 @@ double calculateDamageAmount(double *targetMinPhysicalResistance, double *target
 	}
 	return damageDealt;
 };
-
 void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerMaxHealth, double *playerAttack, double *playerMinPhysicalResistance, double *playerMaxPhysicalResistance, double *playerCritChance, double *playerMinCritDamage, double *playerMaxCritDamage)
 {
 	switch (roleNumber)
@@ -85,7 +83,19 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 		break;
 	}
 };
+void applyHealAmount(double *targetHealth, double *targetMaxHealth, double healAmount)
+{
+	if (*targetHealth + healAmount > *targetMaxHealth)
+	{
+		*targetHealth = *targetMaxHealth;
+	}
+	else
+	{
+		*targetHealth += healAmount;
+	}
+}
 
+//DO THIS
 void createBoss(double *bossHealth, double *bossAttack, double *bossMinPhysicalResistance, double *bossMaxPhysicalResistance, double *bossCritChance, double *bossMinCritDamage, double *bossMaxCritDamage)
 {
 	/*BEGINNING of your solution*/
@@ -133,17 +143,7 @@ int getUserInput(int numOfChoices) {
 	return number;
 }
 
-void applyHealAmount(double *targetHealth, double *targetMaxHealth, double healAmount)
-{
-	if (*targetHealth + healAmount > *targetMaxHealth)
-	{
-		*targetHealth = *targetMaxHealth;
-	}
-	else
-	{
-		*targetHealth += healAmount;
-	}
-}
+
 
 //GAME ENGINE:
 
@@ -338,9 +338,6 @@ int main() {
 	int ID;
 
 	//CHARACTER 
-	//const char roleName1[10] = { 'W','a','r','r','i','o','r' };
-	//const char roleName2[10] = { 'M','a','g','e' };
-	//const char roleName3[10] = { 'A','r','c','h','e','r' };
 	double playerHealth;
 	double playerAttack;
 	double playerMaxHealth;
@@ -353,7 +350,6 @@ int main() {
 
 
 	//BOSS STATS
-	char bossName[10] = { 'S', 'i', 'l', 'v', 'a' };
 	double bossHealth;
 	double bossAttack;
 	double bossMaxPhysicalResistance;
@@ -362,10 +358,12 @@ int main() {
 	double bossMaxCritDamage;
 	double bossMinCritDamage;
 
+
+
+
+	//DO NOT TOUCH, YOU CAN LOOK, BUT CANNOT TOUCH
 	double *updateGameParameters[15];
-
 	int isGameRunning = 1;
-
 	updateGameParameters[0] = &playerHealth;
 	updateGameParameters[1] = &playerMaxHealth;
 	updateGameParameters[2] = &playerAttack;
@@ -374,8 +372,6 @@ int main() {
 	updateGameParameters[5] = &playerCritChance;
 	updateGameParameters[6] = &playerMinCritDamage;
 	updateGameParameters[7] = &playerMaxCritDamage;
-
-
 	updateGameParameters[8] = &bossHealth;
 	updateGameParameters[9]  = &bossAttack;
 	updateGameParameters[10] = &bossMinPhysicalResistance;
@@ -383,24 +379,6 @@ int main() {
 	updateGameParameters[12] = &bossCritChance;
 	updateGameParameters[13] = &bossMinCritDamage;
 	updateGameParameters[14] = &bossMaxCritDamage;
-
-	/*
-	0: playerHealth;
-	1: playerMaxHealth;
-	2: playerAttack;
-	3: playerMaxPhysicalResistance;
-	4: playerMinPhysicalResistance;
-	5: playerCritChance;
-	6: playerMaxCritDamage;
-	7: playerMinCritDamage;
-	8: bossHealth;
-	9: bossAttack;
-	10: bossMaxPhysicalResistance;
-	11: bossMinPhysicalResistance;
-	12: bossCritChance;
-	13: bossMaxCritDmg;
-	14: bossMinCritDmg;
-	*/
 
 	render(0, NULL, NULL);
 	updateGame(0, updateGameParameters);
@@ -416,5 +394,7 @@ int main() {
 		isGameRunning = updateGame(AI(updateGameParameters), updateGameParameters);
 	}
 	getchar();
+
+
 	return 0;
 };
