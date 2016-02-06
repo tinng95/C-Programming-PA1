@@ -255,10 +255,10 @@ int updateGame(int opCode, double *updateGameParameters[])
 
 	switch (opCode)
 	{
-	case 0: //Create Warrrior
+	case 0: //Create Warrrior CHECKED
 		createPlayerCharacter(processInput(0), updateGameParameters[0], updateGameParameters[1], updateGameParameters[2], updateGameParameters[3], updateGameParameters[4], updateGameParameters[5], updateGameParameters[6], updateGameParameters[7]);
 		break;
-	case 1: //Create Boss
+	case 1: //Create Boss CHECKED
 		createBoss(updateGameParameters[8], updateGameParameters[9], updateGameParameters[10], updateGameParameters[11], updateGameParameters[12], updateGameParameters[13], updateGameParameters[14]);
 		break;
 	case 2: //Player Attacks
@@ -274,11 +274,11 @@ int updateGame(int opCode, double *updateGameParameters[])
 		}
 		render(6, updateGameParameters[0], updateGameParameters[6]);
 		break;
-	case 3: //Player Heals
-		*renderArgument1 = calculateHealAmount(updateGameParameters[4], updateGameParameters[5], updateGameParameters[3], updateGameParameters[2]);
+	case 3: //Player Heals CHECKED
+		*renderArgument1 = calculateHealAmount(updateGameParameters[3], updateGameParameters[4], updateGameParameters[6], updateGameParameters[7], updateGameParameters[5], updateGameParameters[2]);
 		applyHealAmount(updateGameParameters[0], updateGameParameters[1], *renderArgument1);
 		render(3, renderArgument1, NULL);
-		render(6, updateGameParameters[0], updateGameParameters[6]);
+		render(6, updateGameParameters[0], updateGameParameters[8]);
 		break;
 	case 4: //Boss Attacks
 		*renderArgument1 = calculateDamageAmount(updateGameParameters[10], updateGameParameters[11], updateGameParameters[13], updateGameParameters[14], updateGameParameters[12], updateGameParameters[9]);
@@ -292,10 +292,10 @@ int updateGame(int opCode, double *updateGameParameters[])
 		}
 		render(6, updateGameParameters[0], updateGameParameters[6]);
 		break;
-	case 5: // Boss Heals
-		*renderArgument1 = calculateHealAmount(updateGameParameters[9], updateGameParameters[10], updateGameParameters[8], updateGameParameters[7]);
+	case 5: // Boss Heals CHECKED
+		*renderArgument1 = calculateHealAmount(updateGameParameters[10], updateGameParameters[11], updateGameParameters[13], updateGameParameters[14], updateGameParameters[12], updateGameParameters[9]);
 		*renderArgument2 = 50000.0;
-		applyHealAmount(updateGameParameters[6], renderArgument2, *renderArgument1);
+		applyHealAmount(updateGameParameters[8], renderArgument2, *renderArgument1);
 		render(5, renderArgument1, NULL);
 		break;
 	}
@@ -354,8 +354,8 @@ int main() {
 	updateGameParameters[3] = &playerMinPhysicalResistance;
 	updateGameParameters[4] = &playerMaxPhysicalResistance;
 	updateGameParameters[5] = &playerCritChance;
-	updateGameParameters[6] = &playerMaxCritDamage;
-	updateGameParameters[7] = &playerMinCritDamage;
+	updateGameParameters[6] = &playerMinCritDamage;
+	updateGameParameters[7] = &playerMaxCritDamage;
 
 
 	updateGameParameters[8] = &bossHealth;
