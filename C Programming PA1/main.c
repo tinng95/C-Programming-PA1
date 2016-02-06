@@ -308,7 +308,7 @@ int AI(double *updateGameParameters[])
 	if (*updateGameParameters[8] > 15000)
 	{
 		action = rand() % 100 + 1;
-		if (action < 90)
+		if (action < 70)
 		{
 			return 4; // attack;
 
