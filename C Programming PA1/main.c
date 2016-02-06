@@ -51,7 +51,7 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 			/*BEGINNING of your solution*/
 		*playerHealth = 10000; //Set *playersHealth to 10000;
 		*playerMaxHealth = 10000; //Set *playerMaxHealth to 10000;
-		*playerAttack = 300; //Set *playerAttack to 300;
+		*playerAttack = 700; //Set *playerAttack to 700;
 		*playerMaxPhysicalResistance = 80.00; //Set *playerMaxPhysicalResistance to 80%;
 		*playerMinPhysicalResistance = 60.00; //Set *playerMinPhysicalResistance to 60%;
 		*playerCritChance = 0.20; //Set *playerMaxCritChance to 0.20;
@@ -89,7 +89,7 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 void createBoss(double *bossHealth, double *bossAttack, double *bossMinPhysicalResistance, double *bossMaxPhysicalResistance, double *bossCritChance, double *bossMinCritDamage, double *bossMaxCritDamage)
 {
 	/*BEGINNING of your solution*/
-	*bossHealth = 50000.00; //Set *bossHealth to 50000
+	*bossHealth = 30000.0; //Set *bossHealth to 30000
 	*bossAttack = (rand() % 200 + 400.0); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
 	*bossMaxPhysicalResistance = 60.00; //Set *bossMaxPhysicalResistance to 60.00;
 	*bossMinPhysicalResistance = 30.00; //Set *bossMinPhysicalResistance to 30.00;
@@ -208,6 +208,7 @@ void render(int opCode, double *renderArgument1, double *renderArgument2)
 		printf("Boss deals %d damage to you!\n", (int)*renderArgument1);
 		break;
 	case 5:
+		printf("<--------------------------------------------------------->\n");
 		printf("Boss heals %d health!\n", (int)*renderArgument1);
 		break;
 	case 6:
