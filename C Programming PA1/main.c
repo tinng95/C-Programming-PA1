@@ -43,7 +43,7 @@ double calculateDamageAmount(double *attackerMinPhysicalResistance, double *atta
 	return damageDealt;
 };
 
-void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerMaxHealth, double *playerAttack, double *playerPhysicalResistance, double *playerCritChance, double *playerCritDamage)
+void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerMaxHealth, double *playerAttack, double *playerMinPhysicalResistance, double *playerMaxPhysicalResistance, double *playerCritChance, double *playerMinCritDamage, double *playerMaxCritDamage)
 {
 	switch (roleNumber)
 	{
@@ -52,9 +52,11 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 		*playerHealth = 10000; //Set *playersHealth to 10000;
 		*playerMaxHealth = 10000; //Set *playerMaxHealth to 10000;
 		*playerAttack = 300; //Set *playerAttack to 300;
-		*playerPhysicalResistance = 0.80; //Set *playerPhysicalResistance to 0.80;
-		*playerCritChance = 0.20; //Set *playerCritChance to 0.20;
-		*playerCritDamage = 8.00; //Set *playerCritDamage to 8.00;
+		*playerMaxPhysicalResistance = 80.00; //Set *playerMaxPhysicalResistance to 80%;
+		*playerMinPhysicalResistance = 60.00; //Set *playerMinPhysicalResistance to 60%;
+		*playerCritChance = 0.20; //Set *playerMaxCritChance to 0.20;
+		*playerMaxCritDamage = 8.00; //Set *playerMaxCritDamage to 8.00;
+		*playerMinCritDamage = 6.00; //Set *playerMinCritDamage to 6.00;
 								  /*END of your solution*/
 		break;
 	case 2: //Mage: Low: health and resistance. Medium: crit damage and crit chance High: attack
@@ -62,9 +64,11 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 		*playerHealth = 4000; //Set *playersHealth to 4000;
 		*playerMaxHealth = 4000; //Set *playerMaxHealth to 4000;
 		*playerAttack = 1000; //Set *playerAttack to 1000;
-		*playerPhysicalResistance = 0.30; //Set *playerPhysicalResistance to 0.30;
-		*playerCritChance = 0.40; //Set *playerCritChance to 0.40;
-		*playerCritDamage = 4.00; //Set *playerCritDamage to 4.00;
+		*playerMaxPhysicalResistance = 40.00; //Set *playerMaxPhysicalResistance to 40.00%;
+		*playerMinPhysicalResistance = 30.00; //Set *playerMinPhysicalResistance to 30.00%;
+		*playerCritChance = 0.40; //Set *playerMaxCritChance to 0.40;
+		*playerMaxCritDamage = 4.00; //Set *playerMaxCritDamage to 4.00;
+		*playerMinCritDamage = 3.00; //Set *playerMinCritDamage to 3.00;
 								  /*END of your solution*/
 		break;
 	case 3://Archer: Medium: health, attack and resistance. High: crit chance and crit damage
@@ -72,22 +76,26 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 		*playerHealth = 6000; //Set *playersHealth to 6000;
 		*playerMaxHealth = 6000; //Set **playerMaxHealth to 6000;
 		*playerAttack = 600; //Set *playerAttack to 600;
-		*playerPhysicalResistance = 0.50; //Set *playerPhysicalResistance to0.50;
-		*playerCritChance = 0.80; //Set *playerCritChance to 0.80;
-		*playerCritDamage = 6.00; //Set *playerCritDamage to 6.00;
+		*playerMaxPhysicalResistance = 50.00; //Set *playerMaxPhysicalResistance to 50.00%;
+		*playerMinPhysicalResistance = 40.00; //Set *playerMinPhysicalResistance to 40.00%;
+		*playerCritChance = 0.80; //Set *playerMaxCritChance to 0.80;
+		*playerMaxCritDamage = 7.00; //Set *playerMaxCritDamage to 7.00;
+		*playerMinCritDamage = 5.00; //Set *playerMinCritDamage to 5.00;
 								  /*END of your solution*/
 		break;
 	}
 };
 
-void createBoss(double *bossHealth, double *bossAttack, double *bossPhysicalResistance, double *bossCritChance, double *bossCritDamage)
+void createBoss(double *bossHealth, double *bossAttack, double *bossMaxPhysicalResistance, double *bossMinPhysicalResistance, double *bossCritChance, double *bossMaxCritDamage, double *bossMinCritDamage)
 {
 	/*BEGINNING of your solution*/
 	*bossHealth = 50000; //Set *bossHealth to 50000
-	*bossAttack = (rand() % 600 + 400.0); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
-	*bossPhysicalResistance = (rand() % 60 + 30.0) / 100; //Set *bossPhysicalResistance to a randomized number in the range between 30 to 60 inclusively
-	*bossCritChance = (rand() % 20 + 10.0) / 100; //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively
-	*bossCritDamage = (rand() % 250 + 100.0) / 100; //Set *bossCritDamage to a randomized number in the range between 100 to 250 inclusively
+	*bossAttack = (double)(rand() % 200 + 400); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
+	*bossMaxPhysicalResistance = 60.00; //Set *bossMaxPhysicalResistance to 60.00;
+	*bossMinPhysicalResistance = 30.00; //Set *bossMinPhysicalResistance to 30.00;
+	*bossCritChance = (double)((rand() % 10 + 20) / 100); //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively;
+	*bossMaxCritDamage = 1.00; //Set *bossMaxCritDamage to 100.00;
+	*bossMinCritDamage = 3.00; //Set *bossMinCritDamage to 300.00;
 													/*END of your solution*/
 };
 
@@ -248,10 +256,10 @@ int updateGame(int opCode, double *updateGameParameters[])
 	switch (opCode)
 	{
 	case 0: //Create Warrrior
-		createPlayerCharacter(processInput(0), updateGameParameters[0], updateGameParameters[1], updateGameParameters[2], updateGameParameters[3], updateGameParameters[4], updateGameParameters[5]);
+		createPlayerCharacter(processInput(0), updateGameParameters[0], updateGameParameters[1], updateGameParameters[2], updateGameParameters[3], updateGameParameters[4], updateGameParameters[5], updateGameParameters[6], updateGameParameters[7]);
 		break;
 	case 1: //Create Boss
-		createBoss(updateGameParameters[6], updateGameParameters[7], updateGameParameters[8], updateGameParameters[9], updateGameParameters[10]);
+		createBoss(updateGameParameters[8], updateGameParameters[9], updateGameParameters[10], updateGameParameters[11], updateGameParameters[12], updateGameParameters[13], updateGameParameters[14]);
 		break;
 	case 2: //Player Attacks
 		*renderArgument1 = calculateDamageAmount(updateGameParameters[3], updateGameParameters[4], updateGameParameters[6], updateGameParameters[7], updateGameParameters[5], updateGameParameters[2]);
@@ -343,20 +351,20 @@ int main() {
 	updateGameParameters[0] = &playerHealth;
 	updateGameParameters[1] = &playerMaxHealth;
 	updateGameParameters[2] = &playerAttack;
-	updateGameParameters[3] = &playerMaxPhysicalResistance;
-	updateGameParameters[4] = &playerMinPhysicalResistance;
+	updateGameParameters[3] = &playerMinPhysicalResistance;
+	updateGameParameters[4] = &playerMaxPhysicalResistance;
 	updateGameParameters[5] = &playerCritChance;
 	updateGameParameters[6] = &playerMaxCritDamage;
-	updateGameParameters[6] = &playerMinCritDamage;
+	updateGameParameters[7] = &playerMinCritDamage;
 
 
 	updateGameParameters[8] = &bossHealth;
 	updateGameParameters[9]  = &bossAttack;
-	updateGameParameters[10] = &bossMaxPhysicalResistance;
-	updateGameParameters[11] = &bossMinPhysicalResistance;
+	updateGameParameters[10] = &bossMinPhysicalResistance;
+	updateGameParameters[11] = &bossMaxPhysicalResistance;
 	updateGameParameters[12] = &bossCritChance;
-	updateGameParameters[13] = &bossMaxCritDamage;
-	updateGameParameters[14] = &bossMinCritDamage;
+	updateGameParameters[13] = &bossMinCritDamage;
+	updateGameParameters[14] = &bossMaxCritDamage;
 
 	/*
 	0: playerHealth;
