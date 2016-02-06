@@ -23,7 +23,7 @@ double calculateHealAmount(double *attackerMinPhysicalResistance, double *attack
 	return healAmount;
 };
 
-double calculateDamageAmount(double *attackerMinPhysicalResistance, double *attackerMaxPhysicalResistance, double *attackerMinCritDamage, double *attackerMaxCritDamage, double *attackerCritChance, double *attackerAttack)
+double calculateDamageAmount(double *targetMinPhysicalResistance, double *targetMaxPhysicalResistance, double *attackerMinCritDamage, double *attackerMaxCritDamage, double *attackerCritChance, double *attackerAttack)
 {
 	double randomCrit;
 	double damageDealt;
@@ -33,12 +33,12 @@ double calculateDamageAmount(double *attackerMinPhysicalResistance, double *atta
 	{
 		damageDealt = (double)((double)*attackerAttack
 			* (double)(rand() % (int)(*attackerMaxCritDamage - *attackerMinCritDamage) + (int)*attackerMinCritDamage)
-			* (1.00 - ((double)(rand() % (int)(*attackerMaxPhysicalResistance - *attackerMinPhysicalResistance) + (int)*attackerMinPhysicalResistance) / 100.00)));
+			* (1.00 - ((double)(rand() % (int)(*targetMaxPhysicalResistance - *targetMinPhysicalResistance) + (int)*targetMinPhysicalResistance) / 100.00)));
 	}
 	else
 	{
 		damageDealt = (double)((double)*attackerAttack
-			* (1.00 - ((double)(rand() % (int)(*attackerMaxPhysicalResistance - *attackerMinPhysicalResistance) + (int)*attackerMinPhysicalResistance) / 100.00)));
+			* (1.00 - ((double)(rand() % (int)(*targetMaxPhysicalResistance - *targetMinPhysicalResistance) + (int)*targetMinPhysicalResistance) / 100.00)));
 	}
 	return damageDealt;
 };
@@ -86,7 +86,7 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 	}
 };
 
-void createBoss(double *bossHealth, double *bossAttack, double *bossMaxPhysicalResistance, double *bossMinPhysicalResistance, double *bossCritChance, double *bossMaxCritDamage, double *bossMinCritDamage)
+void createBoss(double *bossHealth, double *bossAttack, double *bossMinPhysicalResistance, double *bossMaxPhysicalResistance, double *bossCritChance, double *bossMinCritDamage, double *bossMaxCritDamage)
 {
 	/*BEGINNING of your solution*/
 	*bossHealth = 50000.00; //Set *bossHealth to 50000
@@ -262,7 +262,7 @@ int updateGame(int opCode, double *updateGameParameters[])
 		createBoss(updateGameParameters[8], updateGameParameters[9], updateGameParameters[10], updateGameParameters[11], updateGameParameters[12], updateGameParameters[13], updateGameParameters[14]);
 		break;
 	case 2: //Player Attacks
-		*renderArgument1 = calculateDamageAmount(updateGameParameters[3], updateGameParameters[4], updateGameParameters[6], updateGameParameters[7], updateGameParameters[5], updateGameParameters[2]);
+		*renderArgument1 = calculateDamageAmount(updateGameParameters[10], updateGameParameters[11], updateGameParameters[6], updateGameParameters[7], updateGameParameters[5], updateGameParameters[2]);
 		*updateGameParameters[8] -= *renderArgument1; //Subtract damage from boss health
 		renderArgument2 = updateGameParameters[8];
 		render(2, renderArgument1, renderArgument2);
@@ -281,7 +281,7 @@ int updateGame(int opCode, double *updateGameParameters[])
 		render(6, updateGameParameters[0], updateGameParameters[8]);
 		break;
 	case 4: //Boss Attacks
-		*renderArgument1 = calculateDamageAmount(updateGameParameters[10], updateGameParameters[11], updateGameParameters[13], updateGameParameters[14], updateGameParameters[12], updateGameParameters[9]);
+		*renderArgument1 = calculateDamageAmount(updateGameParameters[3], updateGameParameters[4], updateGameParameters[13], updateGameParameters[14], updateGameParameters[12], updateGameParameters[9]);
 		*updateGameParameters[0] -= *renderArgument1;
 		render(4, renderArgument1, NULL);
 		if (*updateGameParameters[0] <= 0)
