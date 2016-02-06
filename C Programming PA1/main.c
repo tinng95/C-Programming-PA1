@@ -98,12 +98,7 @@ void introduction() {
 
 int playerMove()
 {
-	int choice;
-	printf("1. Attack\n");
-	printf("2. Heal\n");
-	printf("Selection: ");
-	choice = getUserInput(2);
-	return choice;
+
 }
 
 int getUserInput(int numOfChoices) {
@@ -115,6 +110,7 @@ int getUserInput(int numOfChoices) {
 		{
 			if (number == i)
 			{
+				printf("\n");
 				return i;
 			}
 		}
@@ -140,11 +136,50 @@ void applyHealAmount(int *targetHealth, int *targetMaxHealth, double healAmount)
 	}
 }
 
-int main() {
-	//Student Info
-	char name[50];
-	int ID;
+void render(int opCode, double *renderArgument1, double *renderArgurment2)
+{
+	switch (opCode)
+	{
+	case 0:
+		introduction();
+		break;
+	case 1: //Display Player Menu
+		printf("1. Attack\n");
+		printf("2. Heal\n");
+		printf("Selection: ");
+		break;
+	case 2:
+		printf("You heal %d\n", (int) *renderArgument1);
+		printf("Player's Health %d\n", (int) *renderArgurment2);
+		break;
+	}
+}
 
+int processInput(int opCode) 
+{
+	int temp;
+	switch (opCode)
+	{
+	case 0: //Class Selection
+		return getUserInput(3); // 1: Warrior, 2: Mage, 3: Archer
+		break;
+	case 1: //Action Selection
+		temp = getUserInput(2);
+		if (temp == 1)
+		{
+			return 2;
+		}
+		else if (temp == 2)
+		{
+			return 3;
+		}
+		break;
+	}
+
+}
+
+void updateGame(int opCode)
+{
 	//CHARACTER 
 	const char roleName1[10] = { 'W','a','r','r','i','o','r' };
 	const char roleName2[10] = { 'M','a','g','e' };
@@ -156,8 +191,8 @@ int main() {
 	double playerPhysicalResistance;
 	double playerCritChance;
 	double playerCritDamage;
-	
-	
+
+
 	//BOSS STATS
 	char bossName[10] = { 'S', 'i', 'l', 'v', 'a' };
 	int bossHealth;
@@ -165,11 +200,60 @@ int main() {
 	double bossPhysicalResistance;
 	double bossCritChance;
 	double bossCritDamage;
-	
+
 	//FUNCTION
-	introduction();
-	createPlayerCharacter(getUserInput(3), &playerHealth, &playerMaxHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
-	createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
+	int renderOpCode = -1;
+	double *renderArgument1 = NULL;
+	double *renderArgument2 = NULL;
+	renderArgument1 = malloc(sizeof(double));
+	renderArgument2 = malloc(sizeof(double));
+
+	switch (opCode)
+	{
+	case 0: //Create Warrrior
+		createPlayerCharacter(processInput(0), &playerHealth, &playerMaxHealth, &playerAttack, &playerPhysicalResistance, &playerCritChance, &playerCritDamage);
+		break;
+	case 1: //Create Boss
+		createBoss(&bossHealth, &bossAttack, &bossPhysicalResistance, &bossCritChance, &bossCritDamage);
+		break;
+	case 2: //Player Attacks
+		*renderArgument1 = calculateDamageAmount(playerAttack, playerCritChance, playerCritDamage, bossPhysicalResistance);
+		renderOpCode = 1;
+		break;
+	case 3: //Player Heals
+		*renderArgument1 = calculateHealAmount(playerCritChance, playerCritDamage, playerPhysicalResistance, playerAttack);
+		applyHealAmount(&playerHealth, &playerMaxHealth, *renderArgument1);
+		renderOpCode = 2;
+		break;
+	}
+	render(renderOpCode, renderArgument1, renderArgument2);
+}
+
+
+
+int main() {
+	//Student Info
+	char name[50];
+	int ID;
+
+
+	
+
+
+	render(0, NULL, NULL);
+	updateGame(0);
+	updateGame(1);
+	
+
+
+
+	while (1 == 1)
+	{
+		render(1, NULL, NULL);
+		updateGame(processInput(1));
+	}
+
+	/*
 	while (1 == 1) //Game Loop NEEDS TO BE REDEISN
 	{
 		while (bossHealth > 0) // Gameplay Loop
@@ -178,7 +262,7 @@ int main() {
 			switch (playerMove())
 			{
 			case 1:
-				printfBuffer = calculateDamageAmount(playerAttack, playerCritChance, playerCritDamage, playerPhysicalResistance);
+				printfBuffer = 
 				bossHealth = bossHealth - printfBuffer;
 				printf("You deal: %lf damage\n", printfBuffer);
 				printf("Boss Health: %d\n", bossHealth);
@@ -210,6 +294,6 @@ int main() {
 				break;
 			}
 		}
-	}
+	}*/
 return 0;
 };
