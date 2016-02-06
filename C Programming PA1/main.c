@@ -22,6 +22,7 @@ double calculateHealAmount(double *attackerMinPhysicalResistance, double *attack
 	}
 	return healAmount;
 }
+
 double calculateDamageAmount(double *targetMinPhysicalResistance, double *targetMaxPhysicalResistance, double *attackerMinCritDamage, double *attackerMaxCritDamage, double *attackerCritChance, double *attackerAttack)
 {
 	double randomCrit;
@@ -41,6 +42,7 @@ double calculateDamageAmount(double *targetMinPhysicalResistance, double *target
 	}
 	return damageDealt;
 };
+
 void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerMaxHealth, double *playerAttack, double *playerMinPhysicalResistance, double *playerMaxPhysicalResistance, double *playerCritChance, double *playerMinCritDamage, double *playerMaxCritDamage)
 {
 	switch (roleNumber)
@@ -83,6 +85,7 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 		break;
 	}
 };
+
 void applyHealAmount(double *targetHealth, double *targetMaxHealth, double healAmount)
 {
 	if (*targetHealth + healAmount > *targetMaxHealth)
@@ -143,9 +146,14 @@ int getUserInput(int numOfChoices) {
 	return number;
 }
 
-
-
 //GAME ENGINE:
+void userInput(char *firstName, char *lastName, int *ID)
+{
+	printf("Please enter your name (First Last):\n");
+	scanf("%s %s", firstName, lastName);
+	printf("Please enter your UH ID:\n");
+	scanf("%d", ID);
+}
 
 int processInput(int opCode)
 {
@@ -335,7 +343,8 @@ int AI(double *updateGameParameters[])
 
 int main() {
 	//Student Info
-	char name[50];
+	char firstName[50];
+	char lastName[50];
 	int ID;
 
 	//CHARACTER 
@@ -380,6 +389,8 @@ int main() {
 	updateGameParameters[12] = &bossCritChance;
 	updateGameParameters[13] = &bossMinCritDamage;
 	updateGameParameters[14] = &bossMaxCritDamage;
+
+	userInput(&firstName, &lastName, &ID);
 
 	render(0, NULL, NULL);
 	updateGame(0, updateGameParameters);
