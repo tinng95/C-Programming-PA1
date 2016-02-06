@@ -308,7 +308,7 @@ int AI(double *updateGameParameters[])
 	if (*updateGameParameters[8] > 15000)
 	{
 		action = rand() % 100 + 1;
-		if (action > 50)
+		if (action > 10)
 		{
 			return 5; //heal
 		}
@@ -320,7 +320,7 @@ int AI(double *updateGameParameters[])
 	else
 	{
 		action = rand() % 100 + 1;
-		if (action > 30)
+		if (action > 70)
 		{
 			return 5; //heal
 		}
