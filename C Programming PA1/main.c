@@ -263,10 +263,10 @@ int updateGame(int opCode, double *updateGameParameters[])
 		break;
 	case 2: //Player Attacks
 		*renderArgument1 = calculateDamageAmount(updateGameParameters[3], updateGameParameters[4], updateGameParameters[6], updateGameParameters[7], updateGameParameters[5], updateGameParameters[2]);
-		*updateGameParameters[6] -= *renderArgument1; //Subtract damage from boss health
-		renderArgument2 = updateGameParameters[6];
+		*updateGameParameters[8] -= *renderArgument1; //Subtract damage from boss health
+		renderArgument2 = updateGameParameters[8];
 		render(2, renderArgument1, renderArgument2);
-		if (*updateGameParameters[6] <= 0)
+		if (*updateGameParameters[8] <= 0)
 		{
 			render(7, NULL, NULL);
 			return 0;
@@ -304,9 +304,9 @@ int updateGame(int opCode, double *updateGameParameters[])
 
 int AI(double *updateGameParameters[])
 {
-	if (*updateGameParameters[6] > 15000)
+	if (*updateGameParameters[8] > 15000)
 	{
-		return 4;
+		return 4; // attack
 	}
 	else
 	{
@@ -397,5 +397,6 @@ int main() {
 		}
 		isGameRunning = updateGame(AI(updateGameParameters), updateGameParameters);
 	}
+	getchar();
 	return 0;
 };
