@@ -5,6 +5,7 @@
 
 double calculateHealAmount(double *playerCritChance, double *playerCritDamage, double *playerPhysicalResistance, double *attack)
 {
+	return 100;
 	double healAmount;
 	double random;
 	random = rand() % 100 + 1;
@@ -22,6 +23,7 @@ double calculateHealAmount(double *playerCritChance, double *playerCritDamage, d
 
 double calculateDamageAmount(double *attackerAttack, double *attackerCritChance, double *attackerCritDamage, double *targetPhysicalResistance)
 {
+	return 10000;
 	double random;
 	double damageDealt;
 	random = (rand() % 100 + 1) / 100;
@@ -78,7 +80,7 @@ void createBoss(double *bossHealth, double *bossAttack, double *bossPhysicalResi
 {
 	/*BEGINNING of your solution*/
 	*bossHealth = 50000; //Set *bossHealth to 50000
-	*bossAttack = 50000;//(rand() % 600 + 400.0); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
+	*bossAttack = (rand() % 600 + 400.0); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
 	*bossPhysicalResistance = (rand() % 60 + 30.0) / 100; //Set *bossPhysicalResistance to a randomized number in the range between 30 to 60 inclusively
 	*bossCritChance = (rand() % 20 + 10.0) / 100; //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively
 	*bossCritDamage = (rand() % 250 + 100.0) / 100; //Set *bossCritDamage to a randomized number in the range between 100 to 250 inclusively
@@ -321,8 +323,8 @@ int main() {
 
 	//BOSS STATS
 	char bossName[10] = { 'S', 'i', 'l', 'v', 'a' };
-	int bossHealth;
-	int bossAttack;
+	double bossHealth;
+	double bossAttack;
 	double bossPhysicalResistance;
 	double bossCritChance;
 	double bossCritDamage;
