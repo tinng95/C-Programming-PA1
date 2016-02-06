@@ -168,8 +168,6 @@ int processInput(int opCode)
 
 }
 
-
-
 void render(int opCode, double *renderArgument1, double *renderArgument2)
 {
 	switch (opCode)
@@ -213,8 +211,6 @@ void render(int opCode, double *renderArgument1, double *renderArgument2)
 		break;
 	}
 }
-
-
 
 int updateGame(int opCode, double *updateGameParameters[])
 {
@@ -300,7 +296,6 @@ int AI(double *updateGameParameters[])
 	}
 }
 
-
 int main() {
 	//Student Info
 	char name[50];
@@ -321,8 +316,8 @@ int main() {
 
 	//BOSS STATS
 	char bossName[10] = { 'S', 'i', 'l', 'v', 'a' };
-	int bossHealth;
-	int bossAttack;
+	double bossHealth;
+	double bossAttack;
 	double bossPhysicalResistance;
 	double bossCritChance;
 	double bossCritDamage;
@@ -330,9 +325,6 @@ int main() {
 	double *updateGameParameters[11];
 
 	int isGameRunning = 1;
-
-
-
 
 	updateGameParameters[0] = &playerHealth;
 	updateGameParameters[1] = &playerMaxHealth;
