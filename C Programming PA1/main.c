@@ -89,7 +89,7 @@ void createPlayerCharacter(int roleNumber, double *playerHealth, double *playerM
 void createBoss(double *bossHealth, double *bossAttack, double *bossMaxPhysicalResistance, double *bossMinPhysicalResistance, double *bossCritChance, double *bossMaxCritDamage, double *bossMinCritDamage)
 {
 	/*BEGINNING of your solution*/
-	*bossHealth = 50000; //Set *bossHealth to 50000
+	*bossHealth = 50000.00; //Set *bossHealth to 50000
 	*bossAttack = (double)(rand() % 200 + 400); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
 	*bossMaxPhysicalResistance = 60.00; //Set *bossMaxPhysicalResistance to 60.00;
 	*bossMinPhysicalResistance = 30.00; //Set *bossMinPhysicalResistance to 30.00;
