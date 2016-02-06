@@ -354,8 +354,8 @@ int main() {
 	updateGameParameters[3] = &playerMinPhysicalResistance;
 	updateGameParameters[4] = &playerMaxPhysicalResistance;
 	updateGameParameters[5] = &playerCritChance;
-	updateGameParameters[6] = &playerMaxCritDamage;
-	updateGameParameters[7] = &playerMinCritDamage;
+	updateGameParameters[6] = &playerMinCritDamage;
+	updateGameParameters[7] = &playerMaxCritDamage;
 
 
 	updateGameParameters[8] = &bossHealth;
