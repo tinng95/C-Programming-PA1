@@ -7,7 +7,7 @@ double calculateHealAmount(double *attackerMinPhysicalResistance, double *attack
 {
 	double healAmount;
 	double randomCrit;
-	randomCrit = (double)((double)(rand() % 100 + 0) / (double)100);
+	randomCrit = (double)((double)(rand() % 100 + 1) / (double)100);
 
 	if (randomCrit <= *attackerCritChance)
 	{
@@ -27,7 +27,7 @@ double calculateDamageAmount(double *targetMinPhysicalResistance, double *target
 {
 	double randomCrit;
 	double damageDealt;
-	randomCrit = (double)((double)(rand() % 100 + 0) / (double)100);
+	randomCrit = (double)((double)(rand() % 100 + 1) / (double)100);
 
 	if (randomCrit <= *attackerCritChance)
 	{
