@@ -90,10 +90,10 @@ void createBoss(double *bossHealth, double *bossAttack, double *bossMaxPhysicalR
 {
 	/*BEGINNING of your solution*/
 	*bossHealth = 50000.00; //Set *bossHealth to 50000
-	*bossAttack = (double)(rand() % 200 + 400); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
+	*bossAttack = (rand() % 200 + 400.0); //Set *bossAttack to a randomized number in the range between 400 to 600 inclusively
 	*bossMaxPhysicalResistance = 60.00; //Set *bossMaxPhysicalResistance to 60.00;
 	*bossMinPhysicalResistance = 30.00; //Set *bossMinPhysicalResistance to 30.00;
-	*bossCritChance = (double)((rand() % 10 + 20) / 100); //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively;
+	*bossCritChance = ((rand() % 10 + 20) / 100); //Set *bossCritChance to a randomized number in the range between 10 to 20 inclusively;
 	*bossMaxCritDamage = 1.00; //Set *bossMaxCritDamage to 100.00;
 	*bossMinCritDamage = 3.00; //Set *bossMinCritDamage to 300.00;
 													/*END of your solution*/
@@ -272,7 +272,7 @@ int updateGame(int opCode, double *updateGameParameters[])
 			return 0;
 			break;
 		}
-		render(6, updateGameParameters[0], updateGameParameters[6]);
+		render(6, updateGameParameters[0], updateGameParameters[8]);
 		break;
 	case 3: //Player Heals CHECKED
 		*renderArgument1 = calculateHealAmount(updateGameParameters[3], updateGameParameters[4], updateGameParameters[6], updateGameParameters[7], updateGameParameters[5], updateGameParameters[2]);
@@ -290,7 +290,7 @@ int updateGame(int opCode, double *updateGameParameters[])
 			return 0;
 			break;
 		}
-		render(6, updateGameParameters[0], updateGameParameters[6]);
+		render(6, updateGameParameters[0], updateGameParameters[8]);
 		break;
 	case 5: // Boss Heals CHECKED
 		*renderArgument1 = calculateHealAmount(updateGameParameters[10], updateGameParameters[11], updateGameParameters[13], updateGameParameters[14], updateGameParameters[12], updateGameParameters[9]);
@@ -304,13 +304,30 @@ int updateGame(int opCode, double *updateGameParameters[])
 
 int AI(double *updateGameParameters[])
 {
+	int action;
 	if (*updateGameParameters[8] > 15000)
 	{
-		return 4; // attack
+		action = rand() % 100 + 1;
+		if (action > 50)
+		{
+			return 5; //heal
+		}
+		else
+		{
+			return 4; // attack;
+		}
 	}
 	else
 	{
-		return 5;
+		action = rand() % 100 + 1;
+		if (action > 30)
+		{
+			return 5; //heal
+		}
+		else
+		{
+			return 4; // attack;
+		}
 	}
 }
 
