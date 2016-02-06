@@ -310,11 +310,12 @@ int AI(double *updateGameParameters[])
 		action = rand() % 100 + 1;
 		if (action > 10)
 		{
-			return 5; //heal
+			return 4; // attack;
+
 		}
 		else
 		{
-			return 4; // attack;
+			
 		}
 	}
 	else
@@ -322,11 +323,11 @@ int AI(double *updateGameParameters[])
 		action = rand() % 100 + 1;
 		if (action > 70)
 		{
-			return 5; //heal
+			return 4; // attack;
 		}
 		else
 		{
-			return 4; // attack;
+			return 5; //heal
 		}
 	}
 }
