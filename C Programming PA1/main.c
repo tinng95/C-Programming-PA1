@@ -3,20 +3,22 @@
 
 //Property of Daniel and Tin
 
-double calculateHealAmount(double *playerCritChance, double *playerCritDamage, double *playerPhysicalResistance, double *attack)
+double calculateHealAmount(double *attackerMinPhysicalResistance, double *attackerMaxPhysicalResistance, double *attackerMinCritDamage, double *attackerMaxCritDamage, double *attackerCritChance, double *attackerAttack)
 {
-	return 100;
 	double healAmount;
-	double random;
-	random = rand() % 100 + 1;
+	double randomCrit;
+	randomCrit = (double)((double)(rand() % 100 + 0) / (double)100);
 
-	if (random <= *playerCritChance)
+	if (randomCrit <= *attackerCritChance)
 	{
-		healAmount = (((*attack * 0.4) * (*playerCritDamage)) * (*playerPhysicalResistance + 1));
+		healAmount = ((((double)*attackerAttack * 0.4)
+			* ((double)(rand() % ((int)(*attackerMaxCritDamage - *attackerMinCritDamage) + (int)*attackerMinCritDamage)))
+			* ((double)(rand() % (int)(*attackerMaxPhysicalResistance - *attackerMinPhysicalResistance) + (int)*attackerMinPhysicalResistance) + 100) / 100.00));
 	}
 	else
 	{
-		healAmount = ((*attack * 0.4) *(*playerPhysicalResistance + 1));
+		healAmount = ((((double)*attackerAttack * 0.4)
+			* ((double)(rand() % (int)(*attackerMaxPhysicalResistance - *attackerMinPhysicalResistance) + (int)*attackerMinPhysicalResistance) + 100) / 100.00));
 	}
 	return healAmount;
 };
