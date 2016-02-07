@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+//#include <mysql.h>
 
 //Property of Daniel and Tin
 //DO NOT OPEN
@@ -342,6 +343,7 @@ int AI(double *updateGameParameters[])
 }
 
 int main() {
+	//printf("%s", mysql_get_client_info());
 	//Student Info
 	char firstName[50];
 	char lastName[50];
