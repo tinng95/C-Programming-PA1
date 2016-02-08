@@ -307,6 +307,7 @@ int updateGame(int opCode, double *updateGameParameters[])
 		*renderArgument2 = 50000.0;
 		applyHealAmount(updateGameParameters[8], renderArgument2, *renderArgument1);
 		render(5, renderArgument1, NULL);
+		render(6, updateGameParameters[0], updateGameParameters[8]);
 		break;
 	}
 	return 1;
@@ -318,7 +319,7 @@ int AI(double *updateGameParameters[])
 	if (*updateGameParameters[8] > 15000)
 	{
 		action = rand() % 100 + 1;
-		if (action < 70)
+		if (action < 70) //70% chance to attack
 		{
 			return 4; // attack;
 
@@ -331,7 +332,7 @@ int AI(double *updateGameParameters[])
 	else
 	{
 		action = rand() % 100 + 1;
-		if (action < 30)
+		if (action < 30 )//30% chance of attack
 		{
 			return 4; // attack;
 		}
