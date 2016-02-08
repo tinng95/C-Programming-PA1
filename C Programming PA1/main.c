@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <mysql.h>
 
 //Property of Daniel and Tin
 //DO NOT OPEN
