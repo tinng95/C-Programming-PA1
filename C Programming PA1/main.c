@@ -408,8 +408,6 @@ int main() {
 		}
 		isGameRunning = updateGame(AI(updateGameParameters), updateGameParameters);
 	}
-
-	fseek(stdin, 0, SEEK_END); //Flush input buffer
 	getchar();
 
 
