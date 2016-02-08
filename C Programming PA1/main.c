@@ -325,7 +325,7 @@ int AI(double *updateGameParameters[])
 		}
 		else
 		{
-			
+			return 5; //heal
 		}
 	}
 	else
